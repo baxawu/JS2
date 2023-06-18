@@ -1,44 +1,45 @@
 // BT1:
+function kiemTra() {
+  let tagScoreSchool = parseFloat(document.getElementById("scoreSchool").value);
+  let tagScoreSub1 = parseFloat(document.getElementById("scoreSub1").value);
+  let tagScoreSub2 = parseFloat(document.getElementById("scoreSub2").value);
+  let tagScoreSub3 = parseFloat(document.getElementById("scoreSub3").value);
+  let tagLocation = parseFloat(document.getElementById("location").value);
+  let tagUser = parseInt(document.getElementById("user").value);
 
-let tagScoreSchool = parseFloat(document.getElementById("scoreSchool").value);
-let tagScoreSub1 = parseFloat(document.getElementById("scoreSub1").value);
-let tagScoreSub2 = parseFloat(document.getElementById("scoreSub2").value);
-let tagScoreSub3 = parseFloat(document.getElementById("scoreSub3").value);
-let tagLocation = parseFloat(document.getElementById("location").value);
-let tagUser = parseInt(document.getElementById("user").value);
+  let uuTienScore = 0;
 
-let uuTienScore = 0;
+  if (tagUser === 1) {
+    uuTienScore += 2.5;
+  } else if (tagUser === 2) {
+    uuTienScore += 1.5;
+  } else if (tagUser === 3) {
+    uuTienScore += 1;
+  }
 
-if (tagUser === 1) {
-  uuTienScore += 2.5;
-} else if (tagUser === 2) {
-  uuTienScore += 1.5;
-} else if (tagUser === 3) {
-  uuTienScore += 1;
+  if (tagLocation === "A") {
+    uuTienScore += 2;
+  } else if (tagLocation === "B") {
+    uuTienScore += 1;
+  } else if (tagLocation === "C") {
+    uuTienScore += 0.5;
+  }
+
+  let tongDiem = tagScoreSub1 + tagScoreSub2 + tagScoreSub3 + uuTienScore;
+
+  let tagResult = document.getElementById("result");
+
+  let tagResultText = "";
+
+  if (tagScoreSub1 === 0 || tagScoreSub2 === 0 || tagScoreSub3 === 0) {
+    tagResultText = " Rot vi co mon thi diem 0.";
+  } else if (tongDiem >= tagScoreSchool) {
+    tagResultText = "Dau voi so diem:" + tongDiem;
+  } else {
+    tagResultText = "Rot voi so diem:" + tongDiem;
+  }
+  tagResult.innerHTML = tagResultText;
 }
-
-if (tagLocation === "A") {
-  uuTienScore += 2;
-} else if (tagLocation === "B") {
-  uuTienScore += 1;
-} else if (tagLocation === "C") {
-  uuTienScore += 0.5;
-}
-
-let tongDiem = tagScoreSub1 + tagScoreSub2 + tagScoreSub3 + uuTienScore;
-
-let tagResult = document.getElementById("result");
-
-let tagResultText = "";
-
-if (tagScoreSub1 === 0 || tagScoreSub2 === 0 || tagScoreSub3 === 0) {
-  tagResultText = " Rot vi co mon thi diem 0.";
-} else if (tongDiem >= tagScoreSchool) {
-  tagResultText = "Dau voi so diem:" + tongDiem;
-} else {
-  tagResultText = "Rot voi so diem:" + tongDiem;
-}
-tagResult.innerHTML = tagResultText;
 
 // BT2
 function calculate() {
